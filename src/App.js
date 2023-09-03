@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
 
-function App() {
+export default function App() {
+  const [nome, setNome] = useState("");
+  const [sobreNome, setSobreNome] = useState("");
+  const [genero, setGenero] = useState("o");
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+    <>
+      <main>
+        <label>Digite seu nome: </label>
+        <input
+          type="text"
+          value={nome}
+          onChange={(e) => setNome(e.target.value)}
+        />
+        <label>Digite seu sobrenome: </label>
+        <input
+          type="text"
+          value={sobreNome}
+          onChange={(e) => setSobreNome(e.target.value)}
+        />
+        <label>Selecione seu gênero</label>
+        <select value={genero} onChange={(e) => setGenero(e.target.value)}>
+          <option value={"o"}>Masculino</option>
+          <option value={"a"}>Feminino</option>
+        </select>
+
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Bem vind{genero}, {nome} {sobreNome}
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      </main>
+    </>
   );
 }
-
-export default App;
